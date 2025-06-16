@@ -10,8 +10,7 @@ namespace Investigation_game.Agent
     {
         public SquadLeader(string name) : base(name)  
         {
-            base.Weaknesses = new Sensor[4];
-            this.AttachedSensors = new Sensor[4];
+            this.Rank = 1;
 
         }
     }
