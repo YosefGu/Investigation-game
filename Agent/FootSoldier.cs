@@ -10,9 +10,7 @@ namespace Investigation_game.Agent
     {
         public FootSoldier(string name) : base(name) 
         {
-            base.Rank = "FootSoldier";
-            this.Weaknesses = new Sensor[2];
-            this.AttachedSensors = new Sensor[2];
+            this.Rank = 0;
         }
     }
 }
