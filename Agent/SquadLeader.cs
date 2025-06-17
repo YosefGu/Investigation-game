@@ -11,6 +11,7 @@ namespace Investigation_game.Agent
         public SquadLeader(string name) : base(name)  
         {
             this.Rank = 1;
+            GenerateWeaknessesSensor();
 
         }
     }

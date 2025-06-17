@@ -23,10 +23,9 @@ namespace Investigation_game.Agent
         {
             this.Name = name;
             this.Exposed = false;
-            GenerateWeaknessesSensor();
         }
 
-        private void GenerateWeaknessesSensor()
+        protected void GenerateWeaknessesSensor()
         {
             int weaknesses = 2 * (Rank + 1);
             Random rand = new Random();  
