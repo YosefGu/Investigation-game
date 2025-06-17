@@ -35,16 +35,22 @@ namespace Investigation_game.Game
                             game.AddArrestedAgent();
                             break;
                         case 2:
-                            game.Investigation();
+                            game.InvestigationChoose();
                             break;
                         case 3:
+                            game.PrintAllAgents();    
+                            break;
+                        case 4:
                             exit = true;
+                            break;
+                        default:
+                            Console.WriteLine("Incurrect input.\nPlease enter a number between 1 - 4");
                             break;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Incurrect input.\nPlease enter a number between 1 - 3");
+                    Console.WriteLine("Incurrect input.\nPlease enter a number between 1 - 4");
                 }
             }
         }
@@ -54,13 +60,14 @@ namespace Investigation_game.Game
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Add agent");
             Console.WriteLine("2. Start investigation");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("3. Show arrested agents");
+            Console.WriteLine("4. Exit");
         }
         private void AddArrestedAgent()
         {
             Agent.Agent agent = CreateAgent();
             ArrestedAgents.Add(agent);
-            Console.WriteLine($"Agent {agent.Name} with rank {agent.Rank} was added.");
+            Console.WriteLine($"Agent {agent.Name} with rank {agent.Rank} was added.\n*** ----- ***");
         }
         private Agent.Agent CreateAgent()
         {
@@ -97,8 +104,7 @@ namespace Investigation_game.Game
                 }
             }
         }
-
-        private void Investigation()
+        private void InvestigationChoose()
         {
             if (ArrestedAgents.Count > 0)
             {
@@ -106,13 +112,14 @@ namespace Investigation_game.Game
                 {
                     if (!agent.Exposed)
                     {
-                        Console.WriteLine("The agent's investigation begins.");
-                        Console.WriteLine($"Agent {agent.Name} with rank {agent.Rank}");
-
-                    } else
-                        Console.WriteLine($"Exposed: {agent.Exposed}");
+                        Console.WriteLine($"The agent: {agent.Name}, with rank: {agent.Rank}, send to investigation");
+                        Investigation.StartInvestigation(agent);
+                        bool keepInvastigate = AskKeepInvastigation();
+                        if (!keepInvastigate)
+                            return;
+                    }
                 }
-                
+                Console.WriteLine("All agents exposed.");
             }
             else
             {
@@ -121,7 +128,27 @@ namespace Investigation_game.Game
             return;
 
         }
+        private bool AskKeepInvastigation() 
+        {
+            Console.WriteLine("Do you want to keep investigate? (Yes / No)");
+            string answer = Console.ReadLine().ToLower();
+            if (answer == "yes") 
+                return true;
+            return false;
+        }
+
+        private void PrintAllAgents()
+        {
+            if (ArrestedAgents.Count > 0)
+            {
+                foreach (Agent.Agent agent in ArrestedAgents)
+                {
+                    Console.WriteLine("----- *** -----");
+                    Console.WriteLine($"Name: {agent.Name}, Weaknesses: [{string.Join(", ", agent.WeaknessesSensor.Select(s => s.Name))}], Attached: [{string.Join(", ", agent.AttachedSensor.Select(s => s.Name))}], Exposed: {agent.Exposed}");
+                }
+            }
+            else
+                Console.WriteLine("No agents arrested.");            
+        }
     }
-
-
 }
