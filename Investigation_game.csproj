@@ -47,6 +47,7 @@
     <Compile Include="Agent\FootSoldier.cs" />
     <Compile Include="Agent\SquadLeader.cs" />
     <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\Investigation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensor\AudioSensor.cs" />
