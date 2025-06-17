@@ -10,6 +10,7 @@ namespace Investigation_game
     {
         static void Main(string[] args)
         {
+            Game.Game.StartGame();
         }
     }
 }
