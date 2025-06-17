@@ -5,12 +5,6 @@ namespace Investigation_game.Game
 {
     internal class Investigation
     {
-        public enum SensorType
-        {
-            AudioSensor = 1,
-            ThermalSensor = 2
-        }
-
         public static void StartInvestigation(Agent.Agent agent)
         {
             bool exit = false;
@@ -69,13 +63,13 @@ namespace Investigation_game.Game
         }
         
 
-        public static Sensor.Sensor CreateSensorByType(SensorType type)
+        public static Sensor.Sensor CreateSensorByType(Enums.Sensors type)
         {
             switch (type)
             {
-                case SensorType.AudioSensor:
+                case Enums.Sensors.AudioSensor:
                     return new Sensor.AudioSensor();
-                case SensorType.ThermalSensor:
+                case Enums.Sensors.ThermalSensor:
                     return new Sensor.ThermalSensor();
                 default:
                     throw new ArgumentException("Unknown sensor type");
@@ -85,7 +79,7 @@ namespace Investigation_game.Game
         public static bool IsValid(string input)
         {
             if (int.TryParse(input, out int value) &&
-                Enum.IsDefined(typeof(SensorType), value))
+                Enum.IsDefined(typeof(Enums.Sensors), value))
             {
                 return true;
             }
@@ -94,7 +88,7 @@ namespace Investigation_game.Game
 
         public static void PrintSensors() 
         {
-            foreach (SensorType sensor in Enum.GetValues(typeof(SensorType)))
+            foreach (Enums.Sensors sensor in Enum.GetValues(typeof(Enums.Sensors)))
             {
                 Console.WriteLine($"{(int)sensor}. {sensor}");
             }
