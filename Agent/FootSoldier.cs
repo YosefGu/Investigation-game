@@ -11,6 +11,7 @@ namespace Investigation_game.Agent
         public FootSoldier(string name) : base(name) 
         {
             this.Rank = 0;
+            GenerateWeaknessesSensor();
         }
     }
 }
