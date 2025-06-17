@@ -11,12 +11,6 @@ namespace Investigation_game.Game
     internal class Game
     {
         public List<Agent.Agent> ArrestedAgents { get; set; } = new List<Agent.Agent>();
-
-        public enum Ranks
-        {
-            FootSoldier = 1,
-            SquadLeader = 2
-        }
         public static void StartGame()
         {
             Game game = new Game();
@@ -75,7 +69,7 @@ namespace Investigation_game.Game
             string name = Console.ReadLine();
 
             Console.WriteLine("Choose rank:");
-            foreach (var val in Enum.GetValues(typeof(Ranks)))
+            foreach (var val in Enum.GetValues(typeof(Enums.Ranks)))
             {
                 Console.WriteLine($"{(int)val}. {val}");
             }
@@ -84,15 +78,15 @@ namespace Investigation_game.Game
             {
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out int choic) &&
-                        Enum.IsDefined(typeof(Ranks), choic))
+                        Enum.IsDefined(typeof(Enums.Ranks), choic))
                 {
-                    Ranks rank = (Ranks)choic;
+                    Enums.Ranks rank = (Enums.Ranks)choic;
 
                     switch (rank)
                     {
-                        case Ranks.FootSoldier:
+                        case Enums.Ranks.FootSoldier:
                             return new FootSoldier(name);
-                        case Ranks.SquadLeader:
+                        case Enums.Ranks.SquadLeader:
                             return new SquadLeader(name);
                         default:
                             throw new InvalidOperationException("Unknow rank.");
