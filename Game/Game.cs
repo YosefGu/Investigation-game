@@ -8,6 +8,7 @@ using Investigation_game.Agent;
 
 namespace Investigation_game.Game
 {
+    using Factories;
     internal class Game
     {
         public List<Agent.Agent> ArrestedAgents { get; set; } = new List<Agent.Agent>();
@@ -81,16 +82,7 @@ namespace Investigation_game.Game
                         Enum.IsDefined(typeof(Enums.Ranks), choic))
                 {
                     Enums.Ranks rank = (Enums.Ranks)choic;
-
-                    switch (rank)
-                    {
-                        case Enums.Ranks.FootSoldier:
-                            return new FootSoldier(name);
-                        case Enums.Ranks.SquadLeader:
-                            return new SquadLeader(name);
-                        default:
-                            throw new InvalidOperationException("Unknow rank.");
-                    }
+                    return AgentFactory.Create(rank, name);
                 }
                 else
                 {
@@ -113,24 +105,23 @@ namespace Investigation_game.Game
                             return;
                     }
                 }
-                Console.WriteLine("All agents exposed.");
+                Console.WriteLine("All the agents have already been investigated or exposed.");
             }
             else
             {
-                Console.WriteLine("No agents in custody.");
+                Console.WriteLine("No agents arrested.");
             }
             return;
 
         }
         private bool AskKeepInvastigation() 
         {
-            Console.WriteLine("Do you want to keep investigate? (Yes / No)");
+            Console.WriteLine("Are you interested in continuing to investigate more people? (Yes / No)");
             string answer = Console.ReadLine().ToLower();
             if (answer == "yes") 
                 return true;
             return false;
         }
-
         private void PrintAllAgents()
         {
             if (ArrestedAgents.Count > 0)
@@ -138,7 +129,7 @@ namespace Investigation_game.Game
                 foreach (Agent.Agent agent in ArrestedAgents)
                 {
                     Console.WriteLine("----- *** -----");
-                    Console.WriteLine($"Name: {agent.Name}, Weaknesses: [{string.Join(", ", agent.WeaknessesSensor.Select(s => s.Name))}], Attached: [{string.Join(", ", agent.AttachedSensor.Select(s => s.Name))}], Exposed: {agent.Exposed}");
+                    Console.WriteLine(agent);
                 }
             }
             else

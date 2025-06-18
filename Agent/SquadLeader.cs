@@ -14,5 +14,15 @@ namespace Investigation_game.Agent
             GenerateWeaknessesSensor();
 
         }
+
+        public override void Attack() 
+        {
+            if (this.AttachedSensor.Count > 0)
+            {
+                int num = Rand.Next(this.AttachedSensor.Count);
+                this.AttachedSensor.RemoveAt(num);
+            }
+            Console.WriteLine("Agent attacking!");
+        }
     }
 }
