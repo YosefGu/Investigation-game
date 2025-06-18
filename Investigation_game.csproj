@@ -46,6 +46,8 @@
     <Compile Include="Agent\Agent.cs" />
     <Compile Include="Agent\FootSoldier.cs" />
     <Compile Include="Agent\SquadLeader.cs" />
+    <Compile Include="Enums\Ranks.cs" />
+    <Compile Include="Enums\Sensors.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Investigation.cs" />
     <Compile Include="Program.cs" />
