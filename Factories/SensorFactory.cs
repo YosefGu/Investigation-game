@@ -15,7 +15,9 @@ namespace Investigation_game.Factories
         private static Dictionary<Sensors, Func<Sensor>> sensorMap = new Dictionary<Sensors, Func<Sensor>>()
         {
             { Sensors.AudioSensor, () => new AudioSensor() },
-            { Sensors.ThermalSensor, () => new ThermalSensor() }
+            { Sensors.ThermalSensor, () => new ThermalSensor() },
+            { Sensors.PulseSensor, () => new PulseSensor() },
+            { Sensors.MotionSensor, () => new MotionSensor() }
         };
 
         public static Sensor Create(Sensors sensorType)

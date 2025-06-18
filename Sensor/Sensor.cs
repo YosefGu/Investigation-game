@@ -16,7 +16,7 @@ namespace Investigation_game.Sensor
 
         public override string ToString()
         {
-            return $"{Name} Sensor";
+            return $"{Name}";
         }
     }
 }

@@ -15,12 +15,7 @@ namespace Investigation_game.Sensor
 
         public override bool IsNotBroken()
         {
-            if (ActivateCount < 3)
-            {
-                ActivateCount++;
-                return true;
-            }
-            return false;
+            return true;
         }
     }
 }

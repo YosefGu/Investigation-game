@@ -14,7 +14,9 @@ namespace Investigation_game.Factories
         private static Dictionary<Ranks, Func<string, Agent>> agentMap = new Dictionary<Ranks, Func<string, Agent>>()
         {
             { Ranks.FootSoldier, (string name) => new FootSoldier(name) },
-            { Ranks.SquadLeader, (string name) => new SquadLeader(name) }
+            { Ranks.SquadLeader, (string name) => new SquadLeader(name) },
+            { Ranks.SeniorCommander, (string name) => new SeniorCommander(name) },
+            { Ranks.OrganizationLeader, (string name) => new OrganizationLeader(name) }
         };
 
         public static Agent Create(Ranks agentRank, string name)

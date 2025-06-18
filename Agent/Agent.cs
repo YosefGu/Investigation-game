@@ -7,6 +7,8 @@ using Investigation_game.Sensor;
 
 namespace Investigation_game.Agent
 {
+    using Factories;
+
     public abstract class Agent
     {
         protected static Random Rand { get; } = new Random();
@@ -32,18 +34,9 @@ namespace Investigation_game.Agent
             {
                 Enums.Sensors randomType = (Enums.Sensors)values.GetValue(Rand.Next(values.Length));
 
-                switch (randomType)
-                {
-                    case Enums.Sensors.AudioSensor:
-                        WeaknessesSensor.Add(new Sensor.AudioSensor());
-                        break;
-                    case Enums.Sensors.ThermalSensor:
-                        WeaknessesSensor.Add(new Sensor.ThermalSensor());
-                        break;
-                }
-
+                Sensor.Sensor sensor = SensorFactory.Create(randomType);
+                WeaknessesSensor.Add(sensor);
             }
-
         }
         public void SetWeaknesseAndAtteched()
         {
