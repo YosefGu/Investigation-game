@@ -10,12 +10,17 @@ namespace Investigation_game.Sensor
     {
         public ThermalSensor() 
         {
-            this.Name = "Thermal Sensor";
+            this.Name = "ThermalSensor";
         }
 
-        public override bool Activate(Sensor sensor)
+        public override bool IsNotBroken()
         {
-            return sensor is ThermalSensor;
+            if (ActivateCount < 3)
+            {
+                ActivateCount++;
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -10,12 +10,13 @@ namespace Investigation_game.Sensor
     {
         public AudioSensor() 
         {
-            this.Name = "Audio Sensor";
+            this.Name = "AudioSensor";
         }
 
-        public override bool Activate(Sensor sensor)
+        public override bool IsNotBroken()
         {
-            return sensor is AudioSensor;
+            ActivateCount++;
+            return true;
         }
     }
 }
