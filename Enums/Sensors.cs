@@ -9,6 +9,8 @@ namespace Investigation_game.Enums
     public enum Sensors
     {
         AudioSensor = 1,
-        ThermalSensor = 2
+        ThermalSensor = 2,
+        MotionSensor = 3,
+        PulseSensor = 4
     }
 }

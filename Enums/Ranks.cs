@@ -9,6 +9,8 @@ namespace Investigation_game.Enums
     public enum Ranks
     {
         FootSoldier = 1,
-        SquadLeader = 2
+        SquadLeader = 2,
+        SeniorCommander = 3,
+        OrganizationLeader = 4,
     }
 }

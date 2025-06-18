@@ -61,6 +61,7 @@ namespace Investigation_game.Game
                         }
                         else if (turn % 3 == 0)
                         {
+                            Console.WriteLine($"Agent {agent.Name} attacking!");
                             agent.Attack();
                         }
                     }
